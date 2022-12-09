@@ -19,14 +19,14 @@ useEffect(()=>{
 },[search])
 
 const handleChange = (event)=> {
-    setSearch(event.target.value);
+    setSearch(event.target.value.toLowerCase());
   }
  
   return (
 
     <>
     <input name="firstName" onChange={handleChange} />
-    
+
  {todos.data.map((data)=>{
  	return(
  		<>
