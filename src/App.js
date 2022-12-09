@@ -9,20 +9,24 @@ import datagetshwoing from './redux/action/action'
 
 const App = ()=> {
       const dispatch = useDispatch();
+        const [search, setSearch] = useState('');
       
       const todos = useSelector(state => state.reduce);
 
 
-
 useEffect(()=>{
-    dispatch(datagetshwoing());
-},[dispatch])
+    dispatch(datagetshwoing(search));
+},[search])
 
-
+const handleChange = (event)=> {
+    setSearch(event.target.value);
+  }
  
   return (
 
     <>
+    <input name="firstName" onChange={handleChange} />
+    
  {todos.data.map((data)=>{
  	return(
  		<>

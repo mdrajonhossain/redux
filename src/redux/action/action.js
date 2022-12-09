@@ -4,16 +4,18 @@ import { getdatashow } from '../types/datatypes';
 
 
 
-const datagetshwoing = () => async(dispatch)=>{
-	try{
+const datagetshwoing = (...search) => async(dispatch)=>{
+ 
 		const { data } = await axios.get("https://jsonplaceholder.typicode.com/todos")		
-		dispatch({type:getdatashow, payload:data});
-	}catch(error){
-		console.log(error)
-	}
-
+		
+		const search_data = data.filter((dada)=> {
+			return dada.title.toLowerCase().includes(search)
+		})
+		dispatch({type:getdatashow, payload:search_data});
 }
 
 
 
 export default datagetshwoing;
+
+
